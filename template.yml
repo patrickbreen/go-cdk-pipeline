@@ -35,6 +35,7 @@ Resources:
           MyCognitoAuthorizer:
             UserPoolArn: !GetAtt MyCognitoUserPool.Arn
 
+  # this right here is good old fashioned cloud formation
   MyCognitoUserPool:
     Type: AWS::Cognito::UserPool
     Properties:
@@ -53,7 +54,7 @@ Resources:
     Type: AWS::Cognito::UserPoolClient
     Properties:
       UserPoolId: !Ref MyCognitoUserPool
-      ClientName: !Ref CognitoUserPoolClientName
+      ClientName: MyGoCDKCognitoClient
       GenerateSecret: false
 
   GetHelloWorld:
