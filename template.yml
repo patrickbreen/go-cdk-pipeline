@@ -38,7 +38,7 @@ Resources:
   MyCognitoUserPool:
     Type: AWS::Cognito::UserPool
     Properties:
-      UserPoolName: !Ref CognitoUserPoolName
+      UserPoolName: MyGoCDKAuthPool
       Policies:
         PasswordPolicy:
           MinimumLength: 8
