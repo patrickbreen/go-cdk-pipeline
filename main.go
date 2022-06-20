@@ -1,15 +1,24 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"io/ioutil"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
+func prettyPrint(i interface{}) string {
+	s, _ := json.MarshalIndent(i, "", "\t")
+	return string(s)
+}
+
 // Handler is executed by AWS Lambda in the main function. Once the request
 // is processed, it returns an Amazon API Gateway response object to AWS Lambda
 func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+
+	fmt.Printf("request: %s\n", prettyPrint(request))
 
 	index, err := ioutil.ReadFile("public/index.html")
 	if err != nil {
